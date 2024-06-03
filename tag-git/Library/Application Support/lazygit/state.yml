@@ -1,0 +1,25 @@
+lastupdatecheck: 0
+recentrepos:
+    - /Users/codex/.dotfiles/config/lvim
+    - /Users/codex/.local/share/lunarvim/site/pack/lazy/opt/neovim-session-manager
+    - /Users/codex/.local/share/lunarvim/site/pack/lazy/opt/nvim-spectre
+    - /Users/codex/Workspace/IdeaProjects/jc-club-origin
+    - /Users/codex/Workspace/IdeaProjects/rich-coffee
+    - /Users/codex/Workspace/HBuilderProjects/rich-coffee-app
+    - /Users/codex/Workspace/IdeaProjects/ssyx-parent
+    - /Users/codex/Workspace/IdeaProjects/salary-parent
+    - /Users/codex/Workspace/IdeaProjects/ZhouYi-Netdisk
+    - /Users/codex/.tmux/plugins/tpm
+startuppopupversion: 5
+lastversion: 0.42.0
+customcommandshistory:
+    - qa
+    - '35:16 '
+    - git push --fetch
+hidecommandlog: false
+ignorewhitespaceindiffview: false
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

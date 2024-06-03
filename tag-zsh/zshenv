@@ -1,0 +1,8 @@
+export TERMINAL="iterm2"
+export EDITOR="lvim"
+
+
+export PATH=$PATH:/usr/local/opt/ruby/bin:/Users/codex/.local/bin:/Users/codex/Workspace/nvim-macos/bin
+. "$HOME/.cargo/env"
+
+export HOMEBREW_NO_ENV_HINTS=true
