@@ -75,6 +75,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 lvim.builtin.indentlines.options.show_current_context = true
 lvim.builtin.indentlines.options.show_current_context_start = true
 lvim.builtin.cmp.cmdline.enable = true
@@ -352,11 +353,11 @@ lvim.plugins = {
         sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'),
         path_replacer = '__',
         colon_replacer = '++',
-        -- autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
-        autoload_mode = require('session_manager.config').AutoloadMode.LastSession,
+        autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+        -- autoload_mode = require('session_manager.config').AutoloadMode.LastSession,
         autosave_last_session = true,
         autosave_ignore_not_normal = true,
-        autosave_ignore_dirs = {},
+        autosave_ignore_dirs = {'~'},
         autosave_ignore_filetypes = {
           'gitcommit',
           'gitrebase'
