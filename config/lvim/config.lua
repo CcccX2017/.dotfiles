@@ -69,7 +69,7 @@ lvim.builtin.which_key.mappings["t"] = {
 -- -- Change theme settings
 lvim.colorscheme = "nightfox"
 
-lvim.builtin.project.active = true
+lvim.builtin.project.active = false
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
