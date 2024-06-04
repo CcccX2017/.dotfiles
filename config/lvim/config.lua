@@ -67,7 +67,8 @@ lvim.builtin.which_key.mappings["t"] = {
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
-lvim.colorscheme = "nightfox"
+lvim.colorscheme = "catppuccin"
+lvim.transparent_window = true
 
 lvim.builtin.project.active = false
 lvim.builtin.alpha.active = true
@@ -119,6 +120,7 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.treesitter.rainbow.enable = true
 
 lvim.plugins = {
+  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
   { "EdenEast/nightfox.nvim" },
   {
     "mrjones2014/nvim-ts-rainbow",
@@ -172,7 +174,7 @@ lvim.plugins = {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
+    --@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
