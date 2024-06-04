@@ -77,8 +77,8 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
-lvim.builtin.indentlines.options.show_current_context = true
-lvim.builtin.indentlines.options.show_current_context_start = true
+lvim.builtin.indentlines.options.show_current_context = false
+lvim.builtin.indentlines.options.show_current_context_start = false
 lvim.builtin.cmp.cmdline.enable = true
 lvim.builtin.cmp.cmdline.options = {
   {
@@ -269,6 +269,57 @@ lvim.plugins = {
     end
   },
   {
+    -- 在有code action的地方显示灯泡
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup({
+        autocmd = { enabled = true },
+        -- LSP client names to ignore
+        -- Example: {"sumneko_lua", "null-ls"}
+        ignore = {},
+        sign = {
+          enabled = true,
+          -- Priority of the gutter sign
+          priority = 10,
+        },
+        float = {
+          enabled = false,
+          -- Text to show in the popup float
+          text = "💡", --
+          -- Available keys for window options:
+          -- - height     of floating window
+          -- - width      of floating window
+          -- - wrap_at    character to wrap at for computing height
+          -- - max_width  maximal width of floating window
+          -- - max_height maximal height of floating window
+          -- - pad_left   number of columns to pad contents at left
+          -- - pad_right  number of columns to pad contents at right
+          -- - pad_top    number of lines to pad contents at top
+          -- - pad_bottom number of lines to pad contents at bottom
+          -- - offset_x   x-axis offset of the floating window
+          -- - offset_y   y-axis offset of the floating window
+          -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
+          -- - winblend   transparency of the window (0-100)
+          win_opts = {},
+        },
+        virtual_text = {
+          enabled = true,
+          -- Text to show at virtual text
+          text = "💡", --
+          -- highlight mode to use for virtual text (replace, combine, blend), see :help nvim_buf_set_extmark() for reference
+          hl_mode = "replace",
+        },
+        status_text = {
+          enabled = false,
+          -- Text to provide when code actions are available
+          text = "💡",
+          -- Text to provide when no actions are available
+          text_unavailable = "",
+        },
+      })
+    end,
+  },
+  {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
@@ -298,34 +349,6 @@ lvim.plugins = {
     build = "npm install --prefix server",
   },
   {
-    "echasnovski/mini.map",
-    branch = "stable",
-    config = function()
-      require('mini.map').setup()
-      local map = require('mini.map')
-      map.setup({
-        integrations = {
-          map.gen_integration.builtin_search(),
-          map.gen_integration.diagnostic({
-            error = 'DiagnosticFloatingError',
-            warn  = 'DiagnosticFloatingWarn',
-            info  = 'DiagnosticFloatingInfo',
-            hint  = 'DiagnosticFloatingHint',
-          }),
-        },
-        symbols = {
-          encode = map.gen_encode_symbols.dot('4x2'),
-        },
-        window = {
-          side = 'right',
-          width = 10, -- set to 1 for a pure scrollbar :)
-          winblend = 8,
-          show_integration_count = false,
-        },
-      })
-    end
-  },
-  {
     "folke/noice.nvim",
     config = function()
       require("noice").setup({
@@ -343,6 +366,9 @@ lvim.plugins = {
             enabled = false,
           }
         }
+      })
+      require("notify").setup({
+        background_colour = "#000000"
       })
     end,
     dependencies = {
@@ -377,16 +403,16 @@ lvim.plugins = {
         max_path_length = 80,
       })
 
-      local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {})
+      -- local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {})
 
-      vim.api.nvim_create_autocmd({ 'User' }, {
-        pattern = "SessionLoadPost",
-        group = config_group,
-        callback = function()
-          vim.cmd("NvimTreeToggle")
-          -- require('nvim-tree.api').tree.toggle(false, true)
-        end,
-      })
+      -- vim.api.nvim_create_autocmd({ 'User' }, {
+      --   pattern = "SessionLoadPost",
+      --   group = config_group,
+      --   callback = function()
+      --     vim.cmd("NvimTreeToggle")
+      --     -- require('nvim-tree.api').tree.toggle(false, true)
+      --   end,
+      -- })
     end,
     dependencies = "nvim-lua/plenary.nvim"
   },
@@ -395,6 +421,272 @@ lvim.plugins = {
   },
   {
     "tpope/vim-surround",
+  },
+  {
+    -- 多光标支持
+    "mg979/vim-visual-multi",
+  },
+  {
+    -- 增强code action浮空显示
+    "weilbith/nvim-code-action-menu",
+    config = function()
+      vim.g.code_action_menu_show_details = false
+      vim.g.code_action_menu_show_diff = true
+      vim.g.code_action_menu_show_action_kind = true
+    end,
+  },
+  {
+    -- 支持当前buffer最大化
+    "szw/vim-maximizer",
+  },
+  {
+    -- 可以再浏览器中预览markdown文件
+    "iamcco/markdown-preview.nvim",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+      vim.g.mkdp_auto_close = 0 -- not close when changing buffer
+    end,
+  },
+  {
+    -- 增强代码块 {} 指示显示
+    "shellRaining/hlchunk.nvim",
+    config = function()
+      -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL" })
+      require("hlchunk").setup({
+        chunk = {
+          enable = true,
+          use_treesitter = false,
+          notify = true, -- notify if some situation(like disable chunk mod double time)
+          exclude_filetypes = {
+            aerial = true,
+            dashboard = true,
+          },
+          support_filetypes = {
+            "*.lua",
+            "*.js",
+          },
+          chars = {
+            horizontal_line = "─",
+            vertical_line = "│",
+            left_top = "╭",
+            left_bottom = "╰",
+            right_arrow = ">",
+          },
+          style = {
+            { fg = "#CB8764" },
+          },
+        },
+        indent = {
+          enable = true, --
+          -- chars = { "│", "¦", "┆", "┊" },
+          chars = { "▏" },
+          -- chars = { " ", " ", " ", " " },
+          use_treesitter = false,
+          style = {
+            -- { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui") }
+            { fg = "#51576e" }
+          },
+        },
+        line_num = {
+          enable = false,
+          use_treesitter = true,
+          style = "#806d9c",
+        },
+        blank = {
+          enable = false,
+          chars = {
+            "․",
+          },
+          style = {
+            vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
+          },
+        },
+      })
+    end,
+  },
+  {
+    -- 增强折叠显示
+    -- lazy = true,
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
+    config = function()
+      vim.o.foldcolumn = '0' -- '0' is not bad
+      vim.o.foldlevel = 9999 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      -- vim.o.foldmethod = "syntax"
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      -- Option 2: nvim lsp as LSP client
+      -- Tell the server the capability of foldingRange,
+      -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        -- NOTE: gxt_kt: Must change lspconfig to lvim.lsp.manager
+        -- Otherwise will make lsp server start failure
+        require('lvim.lsp.manager').setup(ls, {
+          capabilities = capabilities
+          -- you can add other fields for setting up lsp server in this table
+        })
+        -- require('lspconfig')[ls].setup({
+        --   capabilities = capabilities
+        --   -- you can add other fields for setting up lsp server in this table
+        -- })
+      end
+      -- require('ufo').setup()
+      --
+      --
+      --
+      local handler = function(virtText, lnum, endLnum, width, truncate)
+        local newVirtText = {}
+        local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+        local sufWidth = vim.fn.strdisplaywidth(suffix)
+        local targetWidth = width - sufWidth
+        local curWidth = 0
+        for _, chunk in ipairs(virtText) do
+          local chunkText = chunk[1]
+          local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if targetWidth > curWidth + chunkWidth then
+            table.insert(newVirtText, chunk)
+          else
+            chunkText = truncate(chunkText, targetWidth - curWidth)
+            local hlGroup = chunk[2]
+            table.insert(newVirtText, { chunkText, hlGroup })
+            chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            -- str width returned from truncate() may less than 2nd argument, need padding
+            if curWidth + chunkWidth < targetWidth then
+              suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+            end
+            break
+          end
+          curWidth = curWidth + chunkWidth
+        end
+        table.insert(newVirtText, { suffix, 'MoreMsg' })
+        return newVirtText
+      end
+
+      -- global handler
+      -- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
+      -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
+      require('ufo').setup({
+        fold_virt_text_handler = handler
+      })
+    end,
+  },
+  {
+    -- 定义自己的状态栏，比如让git标识显示在行号右侧
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      local builtin = require("statuscol.builtin")
+      require("statuscol").setup({
+        setopt = true, -- Whether to set the 'statuscolumn' option, may be set to false for those who
+        -- want to use the click handlers in their own 'statuscolumn': _G.Sc[SFL]a().
+        -- Although I recommend just using the segments field below to build your
+        -- statuscolumn to benefit from the performance optimizations in this plugin.
+        -- builtin.lnumfunc number string options
+        thousands = false,  -- or line number thousands separator string ("." / ",")
+        relculright = true, -- whether to right-align the cursor line number with 'relativenumber' set
+        -- Builtin 'statuscolumn' options
+        ft_ignore = nil,    -- lua table with filetypes for which 'statuscolumn' will be unset
+        bt_ignore = nil,    -- lua table with 'buftype' values for which 'statuscolumn' will be unset
+        -- Default segments (fold -> sign -> line number + separator), explained below
+        segments = {
+          -- { text = { builtin.foldfunc }, click = "v:lua.ScSa" },
+          {
+            sign = {
+              name = { ".*" },
+              namespace = { ".*" },
+              max_width = 2,
+              colwidth = 2,
+              auto = false,
+            },
+            condition = { true, builtin.not_empty },
+            click = "v:lua.ScLa",
+          },
+          -- {
+          --   sign = {
+          --     name = { "Diagnostic" },
+          --     max_width = 1,
+          --     colwidth = 1,
+          --     auto = false,
+          --   },
+          --   click = "v:lua.ScLa",
+          -- },
+          {
+            text = { builtin.lnumfunc, " " },
+            -- condition = { true, builtin.not_empty },
+            click = "v:lua.ScLa",
+          },
+          {
+            -- Ref: https://github.com/luukvbaal/statuscol.nvim/issues/71
+            sign = {
+              name = { "GitSign" },
+              namespace = { "gitsign" },
+              max_width = 1,
+              colwidth = 1,
+              auto = false,
+            },
+            -- condition = { true, builtin.not_empty },
+            click = "v:lua.ScLa",
+          },
+        },
+        clickmod = "c",   -- modifier used for certain actions in the builtin clickhandlers:
+        -- "a" for Alt, "c" for Ctrl and "m" for Meta.
+        clickhandlers = { -- builtin click handlers
+          Lnum                    = builtin.lnum_click,
+          FoldClose               = builtin.foldclose_click,
+          FoldOpen                = builtin.foldopen_click,
+          FoldOther               = builtin.foldother_click,
+          DapBreakpointRejected   = builtin.toggle_breakpoint,
+          DapBreakpoint           = builtin.toggle_breakpoint,
+          DapBreakpointCondition  = builtin.toggle_breakpoint,
+          DiagnosticSignError     = builtin.diagnostic_click,
+          DiagnosticSignHint      = builtin.diagnostic_click,
+          DiagnosticSignInfo      = builtin.diagnostic_click,
+          DiagnosticSignWarn      = builtin.diagnostic_click,
+          GitSignsTopdelete       = builtin.gitsigns_click,
+          GitSignsUntracked       = builtin.gitsigns_click,
+          GitSignsAdd             = builtin.gitsigns_click,
+          GitSignsChange          = builtin.gitsigns_click,
+          GitSignsChangedelete    = builtin.gitsigns_click,
+          GitSignsDelete          = builtin.gitsigns_click,
+          gitsigns_extmark_signs_ = builtin.gitsigns_click,
+        },
+      })
+    end,
+  },
+  {
+    -- 增强笔记文件显示，markdown, orgmode, neorg
+    -- show latex on markdown file can use plugin "jbyuki/nabla.nvim"
+    'lukas-reineke/headlines.nvim',
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("headlines").setup()
+    end,
+  },
+  {
+    -- visual自动选择，按enter增加，backspace减少
+    "sustech-data/wildfire.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("wildfire").setup()
+    end,
+  },
+  {
+    -- 支持修改后自动保存文件
+    "pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup()
+    end,
   },
 }
 
