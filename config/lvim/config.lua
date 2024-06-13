@@ -409,8 +409,8 @@ lvim.plugins = {
       --   pattern = "SessionLoadPost",
       --   group = config_group,
       --   callback = function()
-      --     vim.cmd("NvimTreeToggle")
-      --     -- require('nvim-tree.api').tree.toggle(false, true)
+      --     -- vim.cmd("NvimTreeToggle")
+      --     require('nvim-tree.api').tree.toggle(false, true)
       --   end,
       -- })
     end,
@@ -450,6 +450,7 @@ lvim.plugins = {
   {
     -- 增强代码块 {} 指示显示
     "shellRaining/hlchunk.nvim",
+    commit = "350e4e8f1b6f4c6dbd9a98946547ed557bab5335",
     config = function()
       -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL" })
       require("hlchunk").setup({
@@ -581,88 +582,88 @@ lvim.plugins = {
       })
     end,
   },
-  {
-    -- 定义自己的状态栏，比如让git标识显示在行号右侧
-    "luukvbaal/statuscol.nvim",
-    config = function()
-      local builtin = require("statuscol.builtin")
-      require("statuscol").setup({
-        setopt = true, -- Whether to set the 'statuscolumn' option, may be set to false for those who
-        -- want to use the click handlers in their own 'statuscolumn': _G.Sc[SFL]a().
-        -- Although I recommend just using the segments field below to build your
-        -- statuscolumn to benefit from the performance optimizations in this plugin.
-        -- builtin.lnumfunc number string options
-        thousands = false,  -- or line number thousands separator string ("." / ",")
-        relculright = true, -- whether to right-align the cursor line number with 'relativenumber' set
-        -- Builtin 'statuscolumn' options
-        ft_ignore = nil,    -- lua table with filetypes for which 'statuscolumn' will be unset
-        bt_ignore = nil,    -- lua table with 'buftype' values for which 'statuscolumn' will be unset
-        -- Default segments (fold -> sign -> line number + separator), explained below
-        segments = {
-          -- { text = { builtin.foldfunc }, click = "v:lua.ScSa" },
-          {
-            sign = {
-              name = { ".*" },
-              namespace = { ".*" },
-              max_width = 2,
-              colwidth = 2,
-              auto = false,
-            },
-            condition = { true, builtin.not_empty },
-            click = "v:lua.ScLa",
-          },
-          -- {
-          --   sign = {
-          --     name = { "Diagnostic" },
-          --     max_width = 1,
-          --     colwidth = 1,
-          --     auto = false,
-          --   },
-          --   click = "v:lua.ScLa",
-          -- },
-          {
-            text = { builtin.lnumfunc, " " },
-            -- condition = { true, builtin.not_empty },
-            click = "v:lua.ScLa",
-          },
-          {
-            -- Ref: https://github.com/luukvbaal/statuscol.nvim/issues/71
-            sign = {
-              name = { "GitSign" },
-              namespace = { "gitsign" },
-              max_width = 1,
-              colwidth = 1,
-              auto = false,
-            },
-            -- condition = { true, builtin.not_empty },
-            click = "v:lua.ScLa",
-          },
-        },
-        clickmod = "c",   -- modifier used for certain actions in the builtin clickhandlers:
-        -- "a" for Alt, "c" for Ctrl and "m" for Meta.
-        clickhandlers = { -- builtin click handlers
-          Lnum                    = builtin.lnum_click,
-          FoldClose               = builtin.foldclose_click,
-          FoldOpen                = builtin.foldopen_click,
-          FoldOther               = builtin.foldother_click,
-          DapBreakpointRejected   = builtin.toggle_breakpoint,
-          DapBreakpoint           = builtin.toggle_breakpoint,
-          DapBreakpointCondition  = builtin.toggle_breakpoint,
-          DiagnosticSignError     = builtin.diagnostic_click,
-          DiagnosticSignHint      = builtin.diagnostic_click,
-          DiagnosticSignInfo      = builtin.diagnostic_click,
-          DiagnosticSignWarn      = builtin.diagnostic_click,
-          GitSignsTopdelete       = builtin.gitsigns_click,
-          GitSignsUntracked       = builtin.gitsigns_click,
-          GitSignsAdd             = builtin.gitsigns_click,
-          GitSignsChange          = builtin.gitsigns_click,
-          GitSignsChangedelete    = builtin.gitsigns_click,
-          GitSignsDelete          = builtin.gitsigns_click,
-          gitsigns_extmark_signs_ = builtin.gitsigns_click,
-        },
-      })
-    end,
-  },
+  -- {
+  --   -- 定义自己的状态栏，比如让git标识显示在行号右侧
+  --   "luukvbaal/statuscol.nvim",
+  --   config = function()
+  --     local builtin = require("statuscol.builtin")
+  --     require("statuscol").setup({
+  --       setopt = true, -- Whether to set the 'statuscolumn' option, may be set to false for those who
+  --       -- want to use the click handlers in their own 'statuscolumn': _G.Sc[SFL]a().
+  --       -- Although I recommend just using the segments field below to build your
+  --       -- statuscolumn to benefit from the performance optimizations in this plugin.
+  --       -- builtin.lnumfunc number string options
+  --       thousands = false,  -- or line number thousands separator string ("." / ",")
+  --       relculright = true, -- whether to right-align the cursor line number with 'relativenumber' set
+  --       -- Builtin 'statuscolumn' options
+  --       ft_ignore = nil,    -- lua table with filetypes for which 'statuscolumn' will be unset
+  --       bt_ignore = nil,    -- lua table with 'buftype' values for which 'statuscolumn' will be unset
+  --       -- Default segments (fold -> sign -> line number + separator), explained below
+  --       segments = {
+  --         -- { text = { builtin.foldfunc }, click = "v:lua.ScSa" },
+  --         {
+  --           sign = {
+  --             name = { ".*" },
+  --             namespace = { ".*" },
+  --             max_width = 2,
+  --             colwidth = 2,
+  --             auto = false,
+  --           },
+  --           condition = { true, builtin.not_empty },
+  --           click = "v:lua.ScLa",
+  --         },
+  --         -- {
+  --         --   sign = {
+  --         --     name = { "Diagnostic" },
+  --         --     max_width = 1,
+  --         --     colwidth = 1,
+  --         --     auto = false,
+  --         --   },
+  --         --   click = "v:lua.ScLa",
+  --         -- },
+  --         {
+  --           text = { builtin.lnumfunc, " " },
+  --           -- condition = { true, builtin.not_empty },
+  --           click = "v:lua.ScLa",
+  --         },
+  --         {
+  --           -- Ref: https://github.com/luukvbaal/statuscol.nvim/issues/71
+  --           sign = {
+  --             name = { "GitSign" },
+  --             namespace = { "gitsign" },
+  --             max_width = 1,
+  --             colwidth = 1,
+  --             auto = false,
+  --           },
+  --           -- condition = { true, builtin.not_empty },
+  --           click = "v:lua.ScLa",
+  --         },
+  --       },
+  --       clickmod = "c",   -- modifier used for certain actions in the builtin clickhandlers:
+  --       -- "a" for Alt, "c" for Ctrl and "m" for Meta.
+  --       clickhandlers = { -- builtin click handlers
+  --         Lnum                    = builtin.lnum_click,
+  --         FoldClose               = builtin.foldclose_click,
+  --         FoldOpen                = builtin.foldopen_click,
+  --         FoldOther               = builtin.foldother_click,
+  --         DapBreakpointRejected   = builtin.toggle_breakpoint,
+  --         DapBreakpoint           = builtin.toggle_breakpoint,
+  --         DapBreakpointCondition  = builtin.toggle_breakpoint,
+  --         DiagnosticSignError     = builtin.diagnostic_click,
+  --         DiagnosticSignHint      = builtin.diagnostic_click,
+  --         DiagnosticSignInfo      = builtin.diagnostic_click,
+  --         DiagnosticSignWarn      = builtin.diagnostic_click,
+  --         GitSignsTopdelete       = builtin.gitsigns_click,
+  --         GitSignsUntracked       = builtin.gitsigns_click,
+  --         GitSignsAdd             = builtin.gitsigns_click,
+  --         GitSignsChange          = builtin.gitsigns_click,
+  --         GitSignsChangedelete    = builtin.gitsigns_click,
+  --         GitSignsDelete          = builtin.gitsigns_click,
+  --         gitsigns_extmark_signs_ = builtin.gitsigns_click,
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     -- 增强笔记文件显示，markdown, orgmode, neorg
     -- show latex on markdown file can use plugin "jbyuki/nabla.nvim"
@@ -681,13 +682,17 @@ lvim.plugins = {
       require("wildfire").setup()
     end,
   },
-  {
-    -- 支持修改后自动保存文件
-    "pocco81/auto-save.nvim",
-    config = function()
-      require("auto-save").setup()
-    end,
-  },
+  -- {
+  --   -- 支持修改后自动保存文件
+  --   "pocco81/auto-save.nvim",
+  --   config = function()
+  --     require("auto-save").setup({
+  --       execution_message = {
+  --         cleaning_interval = 100,
+  --       }
+  --     })
+  --   end,
+  -- },
 }
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
