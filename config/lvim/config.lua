@@ -70,7 +70,7 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.colorscheme = "catppuccin"
 lvim.transparent_window = true
 
-lvim.builtin.project.active = false
+lvim.builtin.project.active = true
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
