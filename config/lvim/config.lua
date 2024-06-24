@@ -67,8 +67,9 @@ lvim.builtin.which_key.mappings["t"] = {
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
-lvim.colorscheme = "catppuccin"
-lvim.transparent_window = true
+-- lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "tokyonight"
+lvim.transparent_window = false
 
 lvim.builtin.project.active = true
 lvim.builtin.alpha.active = true
@@ -381,7 +382,7 @@ lvim.plugins = {
     }
   },
   {
-    commit = "a0b9d25154be573bc0f99877afb3f57cf881cce7",
+    -- commit = "a0b9d25154be573bc0f99877afb3f57cf881cce7",
     "Shatur/neovim-session-manager",
     config = function()
       local Path = require('plenary.path')
@@ -450,7 +451,7 @@ lvim.plugins = {
   {
     -- 增强代码块 {} 指示显示
     "shellRaining/hlchunk.nvim",
-    commit = "350e4e8f1b6f4c6dbd9a98946547ed557bab5335",
+    -- commit = "350e4e8f1b6f4c6dbd9a98946547ed557bab5335",
     config = function()
       -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL" })
       require("hlchunk").setup({

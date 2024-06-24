@@ -127,7 +127,8 @@ alias n='sudo -E n'
 
 alias sz="source ~/.zshrc ~/.zshenv"
 
-alias vim="lvim"
+#alias lv="lvim"
+alias nv="nvim"
 alias ra="joshuto"
 alias gmm="git commit -am "
 alias lg="lazygit"
@@ -155,6 +156,7 @@ alias topen="tmux att -t "
 alias ngrok="~/Workspace/ngrok/ngrok"
 alias ngrok8321="~/Workspace/ngrok/ngrok http --domain=stunning-kitten-correctly.ngrok-free.app 8321"
 alias frpc="~/Workspace/frp/frpc -c ~/Workspace/frp/frpc.ini"
+alias ff="fastfetch"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
@@ -190,3 +192,4 @@ esac
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+alias p10kup="git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull"
