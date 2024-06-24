@@ -128,7 +128,7 @@ alias n='sudo -E n'
 alias sz="source ~/.zshrc ~/.zshenv"
 
 #alias lv="lvim"
-alias nv="nvim"
+alias vim="nvim"
 alias ra="joshuto"
 alias gmm="git commit -am "
 alias lg="lazygit"
