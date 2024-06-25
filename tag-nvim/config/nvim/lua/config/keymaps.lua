@@ -1,8 +1,8 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local map = vim.keymap.set
 
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- jk回到normal模式
@@ -26,10 +26,12 @@ map("n", "-", "<C-x>")
 -- 全选
 map("n", "<C-a>", "gg<S-v>G")
 
--- TODO Jumplist 暂时不知道什么作用
+-- Jumplist 等效按tab键跳到下一个待填充的位置
 map("n", "<C-m>", "<C-i>", opts)
 
--- New Tab map("n", "te", ":tabedit<cr>", opts)
+-- New Tab
+map("n", "te", ":tabedit<cr>", opts)
+map("n", "td", ":bd<cr>", opts)
 map("n", "<tab>", ":tabnext<cr>", opts)
 map("n", "<s-tab>", ":tabprev<cr>", opts)
 
@@ -61,8 +63,10 @@ map({ "n", "v" }, "<s-h>", "^")
 map({ "n", "v" }, "<s-l>", "$")
 
 -- 取消搜索结果高亮
-map("n", "<leader>h", ":noh<cr>", opts)
+map("n", "<leader>h", ":nohl<cr>", opts)
 
--- J -> 5j, K -> 5k
-map("n", "<s-j>", "5j")
-map("n", "<s-k>", "5k", opts)
+-- Resize window
+map("n", "<M-up>", ":res +5<cr>", opts)
+map("n", "<M-down>", ":res -5<cr>", opts)
+map("n", "<M-left>", ":vertical resize-5<cr>", opts)
+map("n", "<M-right>", ":vertical resize+5<cr>", opts)
