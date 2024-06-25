@@ -57,5 +57,12 @@ map("n", "sv", "<C-w>t<C-w>H", { desc = "横向分屏切换为竖向分屏", nor
 map("n", "sb", "<C-w>t<C-w>K", { desc = "竖向分屏切换为横向分屏", noremap = true, silent = true })
 
 -- H -> ^ , L -> $
-map("n", "<s-h>", "^")
-map("n", "<s-l>", "$")
+map({ "n", "v" }, "<s-h>", "^")
+map({ "n", "v" }, "<s-l>", "$")
+
+-- 取消搜索结果高亮
+map("n", "<leader>h", ":noh<cr>", opts)
+
+-- J -> 5j, K -> 5k
+map("n", "<s-j>", "5j")
+map("n", "<s-k>", "5k", opts)
