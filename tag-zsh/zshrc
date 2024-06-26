@@ -196,3 +196,6 @@ alias p10kup="git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 alias setproxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 alias unsetproxy="unset https_proxy unset http_proxy unset all_proxy"
+
+eval "$(zoxide init zsh)"
+alias cd="z"

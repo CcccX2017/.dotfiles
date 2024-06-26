@@ -31,9 +31,10 @@ map("n", "<C-m>", "<C-i>", opts)
 
 -- New Tab
 map("n", "te", ":tabedit<cr>", opts)
-map("n", "td", ":bd<cr>", opts)
-map("n", "<tab>", ":tabnext<cr>", opts)
-map("n", "<s-tab>", ":tabprev<cr>", opts)
+map("n", "td", ":BufDel<cr>", opts)
+map("n", "<leader>ba", ":BufDelAll<cr>", { desc = "Delete All Buffer", noremap = true, silent = true })
+map("n", "<tab>", ":bn<cr>", opts)
+map("n", "<s-tab>", ":bp<cr>", opts)
 
 -- 分屏
 map(
