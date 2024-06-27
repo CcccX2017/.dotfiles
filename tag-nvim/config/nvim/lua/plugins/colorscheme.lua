@@ -1,3 +1,4 @@
+local transparent = false
 return {
   {
     "craftzdog/solarized-osaka.nvim",
@@ -5,7 +6,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        transparent = false,
+        transparent = transparent,
       }
     end,
   },
@@ -16,7 +17,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        transparent_background = true,
+        transparent_background = transparent,
       }
     end,
   },
@@ -26,7 +27,7 @@ return {
     priority = 1000,
     opts = function()
       return {
-        transparent_mode = false,
+        transparent_mode = transparent,
       }
     end,
   },

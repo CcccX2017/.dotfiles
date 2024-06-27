@@ -1,4 +1,13 @@
 return {
+  {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      opts.presets.lsp_doc_border = true
+    end,
+    dependencies = {
+      { "MunifTanjim/nui.nvim", lazy = false },
+    },
+  },
   --navic
   {
     "SmiteshP/nvim-navic",
