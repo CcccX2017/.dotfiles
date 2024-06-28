@@ -12,7 +12,7 @@ map("i", "jk", "<esc>", { desc = "jk回到normal模式" })
 map("n", "<leader>w", ":w<cr>", opts)
 
 -- Q 退出
-map("n", "<S-q>", ":wq<cr>", opts)
+-- map("n", "<S-q>", ":wq<cr>", opts)
 
 -- 删除不覆盖剪切板
 map({ "n", "v" }, "<leader>dd", '"_dd', { desc = "删除一行不覆盖剪切板" })
@@ -31,7 +31,7 @@ map("n", "<C-m>", "<C-i>", opts)
 
 -- New Tab
 map("n", "te", ":tabedit<cr>", opts)
-map("n", "td", ":BufDel<cr>", opts)
+-- map("n", "Q", ":BufDel<cr>", opts)
 map("n", "<leader>ba", ":BufDelAll<cr>", { desc = "Delete All Buffer", noremap = true, silent = true })
 map("n", "<tab>", ":bn<cr>", opts)
 map("n", "<s-tab>", ":bp<cr>", opts)
