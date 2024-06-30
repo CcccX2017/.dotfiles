@@ -8,15 +8,5 @@ end
 
 local api = vim.api
 
--- 显示光标所在行的git提交信息
-local gitsigns_init = false
-api.nvim_create_autocmd("BufEnter", {
-  group = augroup("show_gitsigns"),
-  callback = function()
-    if not gitsigns_init then
-      vim.defer_fn(function()
-        require("gitsigns").toggle_current_line_blame()
-      end, 100)
-    end
-  end,
-})
+-- 不自动注释新行
+api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
