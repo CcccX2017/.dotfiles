@@ -7,9 +7,7 @@ return {
         "shfmt",
         "eslint-lsp",
         "css-lsp",
-        "typescript-language-server",
-        "vue-language-server",
-        "tailwindcss-language-server",
+        "pyright",
       })
     end,
   },

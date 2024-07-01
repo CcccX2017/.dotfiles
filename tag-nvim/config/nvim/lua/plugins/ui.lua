@@ -29,17 +29,17 @@ return {
       opts.config.header = vim.split(logo, "\n")
     end,
   },
-  -- {
-  --   "SmiteshP/nvim-navic",
-  --   opts = function()
-  --     return {
-  --       lsp = {
-  --         auto_attach = true,
-  --         preference = { "volar" },
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "SmiteshP/nvim-navic",
+    opts = function()
+      return {
+        lsp = {
+          auto_attach = true,
+          preference = { "volar" },
+        },
+      }
+    end,
+  },
   -- VS Code like winbar
   {
     "utilyre/barbecue.nvim",
