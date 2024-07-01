@@ -11,4 +11,11 @@ return {
       })
     end,
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = false,
+    opts = function(_, opts)
+      opts.auto_install = true
+    end,
+  },
 }
