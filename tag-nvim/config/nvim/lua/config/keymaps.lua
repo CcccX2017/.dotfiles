@@ -8,6 +8,8 @@ local opts = { noremap = true, silent = true }
 -- jk回到normal模式
 map("i", "jk", "<esc>", { desc = "jk回到normal模式" })
 
+map("n", "x", '"_x')
+
 -- leader w 保存
 map("n", "<leader>w", ":w<cr>", opts)
 
