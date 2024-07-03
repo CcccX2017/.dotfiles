@@ -15,7 +15,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false,
     opts = function(_, opts)
-      opts.auto_install = true
+      vim.list_extend(opts.ensure_installed, {
+        "css",
+        "scss",
+      })
     end,
   },
 }
