@@ -3,3 +3,9 @@
 -- Add any additional options here
 
 -- vim.opt.completeopt = "menuone,noselect"
+
+-- set nvim-navic silence
+vim.g.navic_silence = true
+
+-- set wrap
+vim.opt.wrap = true
