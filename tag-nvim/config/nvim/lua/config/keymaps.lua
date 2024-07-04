@@ -11,7 +11,7 @@ map("i", "jk", "<esc>", { desc = "jk回到normal模式" })
 map({ "n", "v" }, "x", '"_x')
 
 -- leader w 保存
-map("n", "<leader>w", ":w<cr>", opts)
+map("n", "<leader>w", "<cmd>w<cr><esc>", opts)
 
 -- Q 退出
 -- map("n", "<S-q>", ":wq<cr>", opts)

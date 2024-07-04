@@ -41,8 +41,8 @@ return {
       end, { "i", "s" })
 
       opts.window = {
-        completion = cmp_window.bordered(),
-        documentation = cmp_window.bordered(),
+        -- completion = cmp_window.bordered(),
+        -- documentation = cmp_window.bordered(),
       }
 
       cmp.setup.cmdline(":", {
