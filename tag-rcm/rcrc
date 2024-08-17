@@ -1,2 +1,2 @@
-TAGS="rcm lvim zsh tmux git"
+TAGS="rcm zsh tmux git"
 EXCLUDES="README.md"

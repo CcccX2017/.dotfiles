@@ -15,8 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="cloud"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -126,7 +126,8 @@ alias sz="source ~/.zshrc ~/.zshenv"
 
 #alias lv="lvim"
 alias vim="nvim"
-alias ra="joshuto"
+alias nv="neovide"
+alias yz="yazi"
 alias gmm="git commit -am "
 alias lg="lazygit"
 alias gp="git push"
@@ -166,7 +167,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 # export PATH=$JAVA_HOME/bin:$PATH
 
 # Maven
-export MAVEN_HOME=/Users/codex/Workspace/Apache/Maven/apache-maven-3.9.6
+export MAVEN_HOME=/Users/codex/Workspace/Apache/Maven/apache-maven-3.9.8
 # Maven END
 
 export PATH=$PATH:$MAVEN_HOME/bin
