@@ -1,2 +1,1 @@
-TAGS="rcm zsh tmux git"
-EXCLUDES="README.md"
+TAGS="rcm zsh tmux lazygit"
