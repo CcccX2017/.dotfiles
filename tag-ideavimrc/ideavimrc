@@ -1,0 +1,204 @@
+let leader = " "
+let mapleader = " "
+
+" ============================
+" ===== General settings =====
+" ============================
+set number
+set relativenumber
+set showmode
+set so=5
+" 高亮搜索结果
+set hlsearch
+" 进入文件时取消之前的搜索内容高亮
+exec "nohlsearch"
+" 搜索时，实时高亮输入的内容
+set incsearch
+" 搜索忽略大小写
+set ignorecase
+" 智能大小写
+set smartcase
+" 新文件放在右边
+set splitright
+" 新文件放在下边
+set splitbelow
+set clipboard=unnamedplus
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+
+set timeoutlen=10000
+
+" =============================
+" ========== Plugins ==========
+" =============================
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+set which-key
+set multicursor
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" =============================
+" ========= Keymaps ===========
+" =============================
+imap jk <esc>
+
+noremap H ^
+noremap L $
+noremap <C-a> gg<S-v>G
+noremap x "_x
+noremap Q :q<cr>
+
+vnoremap  "_dP
+vnoremap x "_x
+vnoremap c "_c
+vnoremap gb <Action>(CommentByBlockComment)<esc>
+
+nmap s <Plug>(easymotion-s)
+nmap <tab> <action>(NextTab)
+nmap <s-tab> <action>(PreviousTab)
+
+" Ctrl l 向左切换
+map <C-l> <C-w>l
+" Ctrl k 向上切换
+map <C-k> <C-w>k
+" Ctrl h 向右切换
+map <C-h> <C-w>h
+" Ctrl j 向下切换
+map <C-j> <C-w>j
+
+nmap gI <action>(GotoImplementation)
+nmap gy <action>(GotoTypeDeclaration)
+nmap ge <action>(GotoNextError)
+nmap gr <action>(GotoSuperMethod)
+
+" =======================================
+" ========= Which Key Keymaps ===========
+" =======================================
+let g:WhichKeyDesc_Nohlsearch = "<leader>h 取消搜索高亮"
+noremap <leader>h :noh<cr>
+
+" 分屏 Windows相关
+let g:WhichKeyDesc_Windows = "<leader>w Windows"
+" 向右拆分
+let g:WhichKeyDesc_Windows_SplitVertically = "<leader>w| 向右拆分"
+nmap <leader>w\| :vsp<CR>
+" 向下拆分
+let g:WhichKeyDesc_Windows_SplitVertically = "<leader>w- 向右拆分"
+nmap <leader>w- :sp<CR>
+" 切换分屏方向
+let g:WhichKeyDesc_Windows_ChangeSplitOrientation = "<leader>w<Space> 切换分屏方向"
+nmap <leader>w<Space> <action>(ChangeSplitOrientation)
+" 全屏
+let g:WhichKeyDesc_Windows_maximize = "<leader>wo Maximize"
+nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
+" 关闭所有标签
+let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wC CloseActiveWindow"
+nmap <leader>wC <C-w>c
+
+let g:WhichKeyDesc_Delete = "<leader>d 删除/编辑(不覆盖剪切板)"
+let g:WhichKeyDesc_DeleteLine = "<leader>dd 删除一行(\"_dd)"
+noremap <leader>dd "_dd
+let g:WhichKeyDesc_DeleteWord = "<leader>dw 删除一个单词(\"_dw)"
+noremap <leader>dw "_dw
+let g:WhichKeyDesc_DeleteInnerWord = "<leader>dW 删除一个单词(\"_diw)"
+noremap <leader>dW "_diw
+let g:WhichKeyDesc_DeleteWordAndChange = "<leader>dc 删除一个单词并进入编辑模式(\"_cw)"
+noremap <leader>dc "_cw
+let g:WhichKeyDesc_DeleteInnerWordAndChange = "<leader>dC 删除一个单词并进入编辑模式(\"_ciw)"
+noremap <leader>dC "_ciw
+
+let g:WhichKeyDesc_Paste = "<leader>p 粘贴(不覆盖剪切板)"
+noremap <leader>p "_ddP
+
+let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i 在'('后插入"
+nmap <leader>i f(a
+
+let g:WhichKeyDesc_InsertSemicolon = "<leader>j 在行尾插入分号并换行"
+nmap <leader>j A;<ESC>o
+
+let g:WhichKeyDesc_ActivateProjectToolWindow = "<leader>e 打开项目窗口"
+nmap <leader>e <Action>(ActivateProjectToolWindow)
+
+" 代码相关 Code
+let g:WhichKeyDesc_Code = "<leader>c 代码相关"
+let g:WhichKeyDesc_Code_Action = "<leader>ca Code Action"
+nmap <leader>ca <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_Code_RenameElement = "<leader>cr Rename Element"
+nmap <leader>cr <Action>(RenameElement)
+let g:WhichKeyDesc_Code_RenameFile = "<leader>cR Rename File"
+nmap <leader>cR <Action>(RenameFile)
+let g:WhichKeyDesc_Code_Format = "<leader>cf Format+OptimizeImports"
+nmap <leader>cf <Action>(ReformatCode) \| <action>(OptimizeImports)
+let g:WhichKeyDesc_Code_FileStructurePopup = "<leader>cs 文件结构"
+nmap <leader>cs <action>(FileStructurePopup)
+let g:WhichKeyDesc_Code_Generate = "<leader>cg Generate"
+nmap <leader>cg <action>(Generate)
+
+" 启动/重构相关
+let g:WhichKeyDesc_RunOrRefactor = "<leader>r run/refactor"
+let g:WhichKeyDesc_Run = "<leader>rr Run Server"
+nmap <leader>rr <Action>(Run)
+
+let g:WhichKeyDesc_Stop = "<leader>rs Stop Server"
+nmap <leader>rs <Action>(Stop)
+
+" ==================================
+" ========= JRebel Start ===========
+" ==================================
+ljt g:WhichKeyDesc_Run_JRebel = "<leader>rj JRebel"
+let g:WhichKeyDesc_Run_JRebelRun = "<leader>rjr Run with JRebel"
+nmap <leader>rjr <Action>(RebelRunAction2022UI)
+let g:WhichKeyDesc_Run_JRebelDebug = "<leader>rjd Debug with JRebel"
+nmap <leader>rjd <Action>(RebelDebugAction2022UI)
+" ==================================
+" ========== JRebel End ============
+" ==================================
+let g:WhichKeyDesc_ExtractMethod = "<leader>rm 提取方法"
+nmap <leader>rm <Action>(ExtractMethod)
+vmap <leader>rm <Action>(ExtractMethod)
+
+let g:WhichKeyDesc_IntroduceVariable = "<leader>rv 引入变量"
+nmap <leader>rv <Action>(IntroduceVariable)
+vmap <leader>rv <Action>(IntroduceVariable)
+
+let g:WhichKeyDesc_IntroduceConstant = "<leader>rc 引入常量"
+nmap <leader>rc <Action>(IntroduceConstant)
+vmap <leader>rc <Action>(IntroduceConstant)
+
+let g:WhichKeyDesc_IntroduceField = "<leader>rf 引入字段"
+nmap <leader>rf <Action>(IntroduceField)
+vmap <leader>rf <Action>(IntroduceField)
+
+let g:WhichKeyDesc_IntroduceParameter = "<leader>rp 引入形参"
+nmap <leader>rp <Action>(IntroduceParameter)
+vmap <leader>rp <Action>(IntroduceParameter)
+
+let g:WhichKeyDesc_IntroduceFunctionalParameter = "<leader>rP 引入功能形参"
+nmap <leader>rP <Action>(IntroduceFunctionalParameter)
+vmap <leader>rP <Action>(IntroduceFunctionalParameter)
+
+let g:WhichKeyDesc_Inline = "<leader>ri 内联方法"
+nmap <leader>ri <Action>(Inline)
+vmap <leader>ri <Action>(Inline)
+
+" File/Finds
+let g:WhichKeyDesc_SearchEverywhere = "<leader><space> Search Every Where"
+nmap <leader><space> <Action>(SearchEverywhere)
+let g:WhichKeyDesc_Find = "<leader>f find"
+let g:WhichKeyDesc_FindFile = "<leader>ff Find Files"
+nmap <leader>ff <Action>(GotoFile)
+let g:WhichKeyDesc_FindRecentFiles =)"<leader>fr Recent Files"
+nmap <leader>fr <Action>(RecentFiles)
+let g:WhichKeyDesc_FindClass = "<leader>fr Find Class"
+nmap <leader>fc <Action>(GotoClass)
+
+nmap <BS> <Action>(EditorBackSpace)
