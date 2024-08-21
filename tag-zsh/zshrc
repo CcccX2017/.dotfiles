@@ -111,12 +111,22 @@ source $ZSH/oh-my-zsh.sh
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # colorls
-alias ls='colorls'
-alias ll='colorls -l'
-alias la='colorls -a'
-alias lla='colorls -la'
-alias lc='colorls -lA --sd'
+# alias ls='colorls'
+# alias ll='colorls -l'
+# alias la='colorls -a'
+# alias lla='colorls -la'
+# alias lc='colorls -lA --sd'
 # colorls END
+
+# eza start
+alias ls='eza --icons=always -g --time-style long-iso --group-directories-first'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias llg='ls -l --git'
+alias lA='ls -laa'
+alias lls='ls -la --total-size'
+# eza end
 
 # n 管理node版本
 alias n='sudo -E n'
