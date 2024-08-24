@@ -1,5 +1,5 @@
 export TERMINAL="iterm2"
-export EDITOR="lvim"
+export EDITOR="nvim"
 
 
 export PATH=$PATH:/usr/local/opt/ruby/bin:/Users/codex/.local/bin

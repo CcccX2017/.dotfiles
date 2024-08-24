@@ -137,13 +137,22 @@ alias sz="source ~/.zshrc ~/.zshenv"
 #alias lv="lvim"
 alias vim="nvim"
 alias nv="neovide"
-alias yz="yazi"
+# alias yz="yazi"
 alias gmm="git commit -am "
 alias lg="lazygit"
 alias gp="git push"
 alias gp2="git push; git push gitee"
 alias gp3="git push; git push gitee; git push gitea"
 alias gpl="git pull"
+
+function yz() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 alias typora="open -a typora"
 alias c="clear"
