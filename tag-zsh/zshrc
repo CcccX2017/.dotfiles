@@ -220,6 +220,6 @@ alias cd="z"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
-export BAT_THEME="Catppuccin Mocha"
+export BAT_THEME="catppuccin-mocha"
 # export BAT_THEME="gruvbox-dark"
 alias cat="bat"
