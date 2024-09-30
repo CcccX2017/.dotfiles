@@ -223,3 +223,18 @@ ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_V
 export BAT_THEME="catppuccin-mocha"
 # export BAT_THEME="gruvbox-dark"
 alias cat="bat"
+
+# bun completions
+[ -s "/Users/codex/.bun/_bun" ] && source "/Users/codex/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/codex/Library/Application Support/Herd/bin/":$PATH
