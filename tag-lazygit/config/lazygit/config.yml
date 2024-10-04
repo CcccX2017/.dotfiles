@@ -3,8 +3,7 @@ git:
     colorArg: always
     pager: delta --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
 gui:
-  language: 'zh-CN'
-  showIcons: false
+  language: "zh-CN"
   nerdFontsVersion: "3"
   theme:
     # lightTheme: false
@@ -16,6 +15,6 @@ gui:
     optionsTextColor:
       - cyan
     selectedLineBgColor:
-      - '#05445c'
+      - "#05445c"
     selectedRangeBgColor:
       - blue
