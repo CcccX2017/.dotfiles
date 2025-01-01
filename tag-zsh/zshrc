@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=zh_CN.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -225,11 +225,11 @@ export BAT_THEME="catppuccin-mocha"
 alias cat="bat"
 
 # bun completions
-[ -s "/Users/codex/.bun/_bun" ] && source "/Users/codex/.bun/_bun"
+# [ -s "/Users/codex/.bun/_bun" ] && source "/Users/codex/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 # Herd injected PHP 8.3 configuration.
@@ -238,3 +238,4 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 
 # Herd injected PHP binary.
 export PATH="/Users/codex/Library/Application Support/Herd/bin/":$PATH
+source <(tdl completion zsh)
