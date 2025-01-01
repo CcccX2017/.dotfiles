@@ -104,7 +104,7 @@ end
 
 if string.find(wezterm.target_triple, "apple") then
 	config.initial_cols = 150
-	config.initial_rows = 43
+	config.initial_rows = 45
 	config.font_size = 16
 	config.hide_tab_bar_if_only_one_tab = true
 	config.window_padding.top = 20
