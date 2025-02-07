@@ -200,5 +200,4 @@ let g:WhichKeyDesc_FindRecentFiles =)"<leader>fr Recent Files"
 nmap <leader>fr <Action>(RecentFiles)
 let g:WhichKeyDesc_FindClass = "<leader>fr Find Class"
 nmap <leader>fc <Action>(GotoClass)
-
 nmap <BS> <Action>(EditorBackSpace)
