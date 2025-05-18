@@ -57,7 +57,7 @@ noremap <C-a> gg<S-v>G
 noremap x "_x
 noremap Q :q<cr>
 
-vnoremap  "_dP
+vnoremap p "_dP
 vnoremap x "_x
 vnoremap c "_c
 vnoremap gb <Action>(CommentByBlockComment)<esc>
