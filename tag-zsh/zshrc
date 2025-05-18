@@ -137,6 +137,7 @@ alias sz="source ~/.zshrc ~/.zshenv"
 #alias lv="lvim"
 alias vim="nvim"
 alias nv="neovide"
+alias vi="vim"
 # alias yz="yazi"
 alias gmm="git commit -am "
 alias lg="lazygit"
@@ -197,7 +198,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 alias tdld="tdl dl"
 
-PATH=~/.console-ninja/.bin:$PATH
+
 # pnpm
 export PNPM_HOME="/Users/codex/Library/pnpm"
 case ":$PATH:" in
@@ -239,3 +240,12 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 # Herd injected PHP binary.
 export PATH="/Users/codex/Library/Application Support/Herd/bin/":$PATH
 source <(tdl completion zsh)
+
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/84/"
+
