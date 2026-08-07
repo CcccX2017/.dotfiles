@@ -1,7 +1,8 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
+  diffRenderers:
+    - colorArg: always
+      command: emojify | delta --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
+  parseEmoji: true
 gui:
   language: "zh-CN"
   nerdFontsVersion: "3"
