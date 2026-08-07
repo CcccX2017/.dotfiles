@@ -110,6 +110,8 @@ export LANG=zh_CN.UTF-8
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+
 # colorls
 # alias ls='colorls'
 # alias ll='colorls -l'
@@ -162,8 +164,8 @@ alias c="clear"
 alias hexon="hexo n post -p "
 alias hexod="hexo clean && hexo g && hexo d"
 
-# neofetch和onefetch的别名
-alias nf="neofetch"
+# fastfetch和onefetch的别名
+alias ff="fastfetch"
 alias of="onefetch"
 
 # tmux 别名
@@ -174,7 +176,6 @@ alias topen="tmux att -t "
 alias ngrok="~/Workspace/ngrok/ngrok"
 alias ngrok8321="~/Workspace/ngrok/ngrok http --domain=stunning-kitten-correctly.ngrok-free.app 8321"
 alias frpc="~/Workspace/frp/frpc -c ~/Workspace/frp/frpc.ini"
-alias ff="fastfetch"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
@@ -200,26 +201,37 @@ alias tdld="tdl dl"
 
 
 # pnpm
-export PNPM_HOME="/Users/codex/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="/Users/codex/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
 # pnpm end
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
 alias p10kup="git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull"
 
-alias setproxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
-alias unsetproxy="unset https_proxy unset http_proxy unset all_proxy"
+# alias setproxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+# alias unsetproxy="unset https_proxy unset http_proxy unset all_proxy"
+# 终端代理开关
+function setproxy() {
+    export http_proxy="http://127.0.0.1:7890"
+    export https_proxy="http://127.0.0.1:7890"
+    export ALL_PROXY="socks5://127.0.0.1:7890"
+    echo "终端代理已开启"
+}
+
+function unsetproxy() {
+    unset http_proxy https_proxy ALL_PROXY
+    echo "终端代理已关闭"
+}
 
 eval "$(zoxide init zsh)"
 alias cd="z"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 export BAT_THEME="catppuccin-mocha"
 # export BAT_THEME="gruvbox-dark"
@@ -249,3 +261,4 @@ export HERD_PHP_82_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/84/"
 
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
