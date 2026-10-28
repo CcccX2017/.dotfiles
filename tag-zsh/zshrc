@@ -110,7 +110,7 @@ export LANG=zh_CN.UTF-8
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+# export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 
 # colorls
 # alias ls='colorls'
@@ -176,6 +176,7 @@ alias topen="tmux att -t "
 alias ngrok="~/Workspace/ngrok/ngrok"
 alias ngrok8321="~/Workspace/ngrok/ngrok http --domain=stunning-kitten-correctly.ngrok-free.app 8321"
 alias frpc="~/Workspace/frp/frpc -c ~/Workspace/frp/frpc.ini"
+alias port="sudo port"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
@@ -261,4 +262,5 @@ export HERD_PHP_82_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/84/"
 
+export HOMEBREW_ACCEPT_UNSUPPORTED_ARCH=1
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
