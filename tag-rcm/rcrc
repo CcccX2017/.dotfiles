@@ -1,2 +1,3 @@
 TAGS="rcm zsh tmux lazygit bat ideavimrc wezterm"
 SYMLINK_DIRS="wezterm bat lvim"
+EXCLUDES="README.md"

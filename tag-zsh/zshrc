@@ -228,8 +228,10 @@ function unsetproxy() {
     echo "终端代理已关闭"
 }
 
-eval "$(zoxide init zsh)"
-alias cd="z"
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -252,7 +254,7 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 
 # Herd injected PHP binary.
 export PATH="/Users/codex/Library/Application Support/Herd/bin/":$PATH
-source <(tdl completion zsh)
+command -v tdl >/dev/null 2>&1 && source <(tdl completion zsh)
 
 
 # Herd injected PHP 8.2 configuration.
@@ -264,3 +266,8 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 
 export HOMEBREW_ACCEPT_UNSUPPORTED_ARCH=1
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+# nvm（Node Version Manager）— v0.40.8
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
