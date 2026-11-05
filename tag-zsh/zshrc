@@ -267,6 +267,15 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 export HOMEBREW_ACCEPT_UNSUPPORTED_ARCH=1
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
+# ImageMagick 7 — MacPorts 为与 IM6 共存，把 IM7 装在 /opt/local/lib/ImageMagick7/bin，
+# 不在默认 PATH 中。这里前置该目录，使 magick/convert/identify 走 IM7（IM6 仅作为 chafa 的链接库保留）。
+if [ -d /opt/local/lib/ImageMagick7/bin ]; then
+  case ":$PATH:" in
+    *":/opt/local/lib/ImageMagick7/bin:"*) ;;
+    *) export PATH="/opt/local/lib/ImageMagick7/bin:$PATH" ;;
+  esac
+fi
+
 # nvm（Node Version Manager）— v0.40.8
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
