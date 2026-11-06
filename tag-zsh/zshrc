@@ -201,12 +201,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 alias tdld="tdl dl"
 
 
-# pnpm
-# export PNPM_HOME="/Users/codex/Library/pnpm"
-# case ":$PATH:" in
-#   *":$PNPM_HOME:"*) ;;
-#   *) export PATH="$PNPM_HOME:$PATH" ;;
-# esac
+# pnpm（pnpm 12 的全局 bin 在 $PNPM_HOME/bin，czg 这类全局 CLI 装在这里）
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 # pnpm end
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -240,6 +240,8 @@ export BAT_THEME="Catppuccin Mocha"   # 名称必须与主题文件内 name 字�
 # export BAT_THEME="gruvbox-dark"
 alias cat="bat"
 
+alias port="sudo port"
+
 # bun completions
 # [ -s "/Users/codex/.bun/_bun" ] && source "/Users/codex/.bun/_bun"
 
@@ -265,7 +267,6 @@ export HERD_PHP_82_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/c
 export HERD_PHP_84_INI_SCAN_DIR="/Users/codex/Library/Application Support/Herd/config/php/84/"
 
 export HOMEBREW_ACCEPT_UNSUPPORTED_ARCH=1
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 # ImageMagick 7 — MacPorts 为与 IM6 共存，把 IM7 装在 /opt/local/lib/ImageMagick7/bin，
 # 不在默认 PATH 中。这里前置该目录，使 magick/convert/identify 走 IM7（IM6 仅作为 chafa 的链接库保留）。
@@ -280,3 +281,4 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
